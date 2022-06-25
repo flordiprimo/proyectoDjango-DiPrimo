@@ -1,0 +1,39 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Camisas
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Camisas</h1>
+    <div class="d-flex justify-content-center my-4">
+        <a href="{%url 'buscar-camisa'%}"><button class="btn btn-success">Buscar por marca</button></a>
+    </div>
+    <div class="row row-cols-4 pb-4 justify-content-center">
+        {% for camisa in camisas %}
+            <div class="card col" style="width: 18rem;">
+                <img src="{%static 'tienda/assets/img/products/camisa.jpg'%}" class="card-img-top" alt="camisa">
+                <div class="card-body">
+                <h5 class="card-title">Camisa {{camisa.marca}}</h5>
+                <p class="card-text">Talle: {{camisa.get_talle_display}}</p>
+                <p class="card-text">Color: {{camisa.color}}</p>
+                <p class="card-text">Precio $: {{camisa.precio}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="d-flex justify-content-center my-4">
+        <a href="{%url 'crear-camisa'%}"><button class="btn btn-success">+ Crear Camisa</button></a>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock%}

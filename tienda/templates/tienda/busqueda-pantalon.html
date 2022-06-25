@@ -1,0 +1,37 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Buscar Pantalon
+{%endblock%}
+
+{% block ContenidoPagina %}
+<h2 class="section-title">Buscar Pantalon por marca </h2>
+<div class="container d-flex justify-content-center mb-5">
+    <p><form action='' method='POST'>{% csrf_token %}
+
+        <input type='text' name="marca" id="" min="0">
+
+        <input type='submit' value='Buscar' class='btn btn-success'>
+    </form></p>
+</div>
+<div class="container">
+    <h2 class="section-title">Resultados</h2>
+        <div class="row row-cols-4 pb-4 justify-content-center">
+            {% for resultado in marcas %}
+                <div class="card col" style="width: 18rem;">
+                    <img src="{%static 'tienda/assets/img/products/pantalon.webp'%}" class="card-img-top" alt="pantalon">
+                    <div class="card-body">
+                    <h5 class="card-title">Pantalon {{resultado.marca}}</h5>
+                    <p class="card-text">Talle: {{resultado.get_talle_display}}</p>
+                    <p class="card-text">Color: {{resultado.color}}</p>
+                    <p class="card-text">Precio $: {{resultado.precio}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+</div>
+
+
+{% endblock%}

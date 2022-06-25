@@ -1,0 +1,39 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Pantalones
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Pantalones</h1>
+    <div class="d-flex justify-content-center my-4">
+        <a href="{%url 'buscar-pantalon'%}"><button class="btn btn-success">Buscar por marca</button></a>
+    </div>
+    <div class="row row-cols-4 pb-4 justify-content-center">
+        {% for pantalon in pantalones %}
+            <div class="card col" style="width: 18rem;">
+                <img src="{%static 'tienda/assets/img/products/pantalon.webp'%}" class="card-img-top" alt="pantalon">
+                <div class="card-body">
+                <h5 class="card-title">Pantalon {{pantalon.marca}}</h5>
+                <p class="card-text">Talle: {{pantalon.get_talle_display}}</p>
+                <p class="card-text">Color: {{pantalon.color}}</p>
+                <p class="card-text">Precio $: {{pantalon.precio}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="d-flex justify-content-center my-4">
+        <a href="{%url 'crear-pantalon'%}"><button class="btn btn-success">+ Crear Pantalon</button></a>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock%}
