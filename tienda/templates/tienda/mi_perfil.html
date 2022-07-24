@@ -1,0 +1,43 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Mi Perfil
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Mi Perfil</h1>
+    <div class="d-flex flex-column pb-4 align-items-center">
+              {% if user.avatar.imagen.url %}
+                <img class="rounded-circle mb-2" src="{{ user.avatar.imagen.url }}" alt="" srcset="" style="height: 100px; width: 100px;">
+              {% else %}
+              <img class="rounded-circle" src="{% get_media_prefix%}/avatares/generico.png" alt="" srcset="" style="height: 100px;">
+              <a href="{% url 'agregar_avatar'%}"><p class=''>Agregar imagen de perfil</p></a>
+              {% endif %}
+        <h2 class='text-center'>¡Hola, <strong>{{user.username}}</strong>!</h2>
+        <p class='m-0'><strong>Nombre:</strong>{% if user.first_name %}
+                                    {{user.first_name}}
+                                    {% else %}
+                                    <span>N/A</span>
+                                    {% endif %}
+        </p>
+        <p class='m-0'><strong>Apellido:</strong>{% if user.last_name %}
+                                        {{user.last_name}}
+                                        {% else %}
+                                        <span>N/A</span>
+                                        {% endif %}
+        </p>
+        <p class='m-0'><strong>Email:</strong> {{user.email}}</p>
+        <a href="{% url 'editar_perfil'%}"><button class='my-2 btn btn-success'><i class="bi bi-pencil-fill"></i> Editar info</button></a>
+        <a href="{% url 'cambiar_password'%}"><button class='my-2 btn btn-success'><i class="bi bi-asterisk"></i> Cambiar contraseña</button></a>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock%}

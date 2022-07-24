@@ -10,25 +10,28 @@ Remeras
 <div class="container">
     <h1 class="section-title">Remeras</h1>
     <div class="d-flex justify-content-center my-4">
-        <a href="{%url 'buscar-remera'%}"><button class="btn btn-success">Buscar por marca</button></a>
+        <a href="{%url 'buscar-remera'%}"><button class="btn btn-success"><i class="bi bi-search"></i> Buscar por modelo</button></a>
     </div>
     <div class="row row-cols-4 pb-4 justify-content-center">
         {% for remera in remeras %}
-            <div class="card col" style="width: 18rem;">
-                <img src="{%static 'tienda/assets/img/products/remera.jpg'%}" class="card-img-top" alt="remera">
+            <div class="card col m-1" style="width: 18rem;">
+                <img src=
+                {%if remera.imagen%}
+                "{%get_media_prefix%}{{remera.imagen}}"
+                {%else%}
+                "{%static 'tienda/assets/img/products/remera.jpg'%}"
+                {%endif%}
+                class="card-img-top" alt="remera">
                 <div class="card-body">
-                <h5 class="card-title">Remera {{remera.marca}}</h5>
-                <p class="card-text">Talle: {{remera.get_talle_display}}</p>
-                <p class="card-text">Color: {{remera.color}}</p>
-                <p class="card-text">Precio $: {{remera.precio}}</p>
+                <h5 class="card-title text-capitalize">Remera {{remera.modelo}}</h5>
+                <p class="card-text mb-0"><strong>Talle:</strong> {{remera.get_talle_display}}</p>
+                <p class="card-text mb-0 text-capitalize"><strong>Color:</strong> {{remera.color}}</p>
+                <p class="card-text"><strong>Precio:</strong> ${{remera.precio}}</p>
+                <a href="{% url 'remera_detail' remera.id %}" class='btn btn-success'><i class="bi bi-eye-fill"></i> Ver Remera</a>
                 </div>
             </div>
         {% endfor %}
     </div>
-    <div class="d-flex justify-content-center my-4">
-        <a href="{%url 'crear-remera'%}"><button class="btn btn-success">+ Crear Remera</button></a>
-    </div>
-
 </div>
 
 

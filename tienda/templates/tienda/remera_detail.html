@@ -1,0 +1,41 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Detalle Remera
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Detalle de producto</h1>
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'remeras' %}" class="btn btn-success">Volver a Remeras</a>
+    </div>
+    <div class="row border m-4">
+        <div class="col w-50">
+            <img src=
+                {%if remera.imagen%}
+                "{%get_media_prefix%}{{remera.imagen}}"
+                {%else%}
+                "{%static 'tienda/assets/img/products/remera.jpg'%}"
+                {%endif%}
+                class="w-100" alt="remera">
+        </div>
+        <div class="col p-4">
+            <h2>Remera {{remera.modelo}}</h2>
+            <p class="lead">{{remera.descripcion}}</p>
+            <p><strong>Color:</strong> {{remera.color}}</p>
+            <p><strong>Talle:</strong> {{remera.get_talle_display}}</p>
+            <p><strong>Precio:</strong> ${{remera.precio}}</p>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock%}

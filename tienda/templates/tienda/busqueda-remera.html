@@ -6,26 +6,34 @@ Buscar Remeras
 {%endblock%}
 
 {% block ContenidoPagina %}
-<h2 class="section-title">Buscar Remera por marca </h2>
+<h2 class="section-title">Buscar Remera por modelo </h2>
 <div class="container d-flex justify-content-center mb-5">
     <p><form action='' method='POST'>{% csrf_token %}
 
-        <input type='text' name="marca" id="" min="0">
+        <input type='text' name="modelo" id="" min="0">
 
-        <input type='submit' value='Buscar' class='btn btn-success'>
+        <button type='submit' class='btn btn-success'><i class="bi bi-search"></i> Buscar</button>
+        <a href="{% url 'remeras' %}" class="btn btn-secondary">Volver a Remeras</a>
     </form></p>
 </div>
 <div class="container">
     <h2 class="section-title">Resultados</h2>
         <div class="row row-cols-4 pb-4 justify-content-center">
-            {% for resultado in marcas %}
-                <div class="card col" style="width: 18rem;">
-                    <img src="{%static 'tienda/assets/img/products/remera.jpg'%}" class="card-img-top" alt="remera">
+            {% for resultado in modelos %}
+                <div class="card col m-1" style="width: 18rem;">
+                    <img src=
+                    {%if resultado.imagen%}
+                    "{%get_media_prefix%}{{resultado.imagen}}"
+                    {%else%}
+                    "{%static 'tienda/assets/img/products/remera.jpg'%}"
+                    {%endif%}
+                    class="card-img-top" alt="remera">
                     <div class="card-body">
-                    <h5 class="card-title">Remera {{resultado.marca}}</h5>
+                    <h5 class="card-title text-capitalize">Remera {{resultado.modelo}}</h5>
                     <p class="card-text">Talle: {{resultado.get_talle_display}}</p>
                     <p class="card-text">Color: {{resultado.color}}</p>
-                    <p class="card-text">Precio $: {{resultado.precio}}</p>
+                    <p class="card-text text-capitalize">Precio $: {{resultado.precio}}</p>
+                    <a href="{% url 'remera_detail' resultado.id %}" class='btn btn-success'>Ver Remera</a>
                     </div>
                 </div>
             {% endfor %}

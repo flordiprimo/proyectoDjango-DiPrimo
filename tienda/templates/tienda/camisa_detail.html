@@ -1,0 +1,41 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Detalle Camisa
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Detalle de producto</h1>
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'camisas' %}" class="btn btn-success">Volver a Camisas</a>
+    </div>
+    <div class="row border m-4">
+        <div class="col w-50">
+            <img src=
+                {%if camisa.imagen%}
+                "{%get_media_prefix%}{{camisa.imagen}}"
+                {%else%}
+                "{%static 'tienda/assets/img/products/camisa.jpg'%}"
+                {%endif%}
+                class="w-100" alt="camisa">
+        </div>
+        <div class="col p-4">
+            <h2>Camisa {{camisa.modelo}}</h2>
+            <p class="lead">{{camisa.descripcion}}</p>
+            <p><strong>Color:</strong> {{camisa.color}}</p>
+            <p><strong>Talle:</strong> {{camisa.get_talle_display}}</p>
+            <p><strong>Precio:</strong> ${{camisa.precio}}</p>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock%}

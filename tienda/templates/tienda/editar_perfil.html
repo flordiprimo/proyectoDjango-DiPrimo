@@ -1,0 +1,27 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Editar Perfil
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Editar Perfil</h1>
+    <div class="d-flex justify-content-center mb-4">
+        <form action='' method="post" class="border p-4">{%csrf_token%}
+            <p class='lead'>Estás editando al usuario: <strong>{{user.username}}</strong></p>
+            <p>Nota: Este formulario no cambia la contraseña.<br>Para cambiar tu contraseña, hacé click <strong><a href="{% url 'cambiar_password'%}">acá</a></strong></p>
+            {{form.as_p}}
+            <button type='submit' class='btn btn-success'>Guardar</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock%}

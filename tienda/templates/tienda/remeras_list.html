@@ -1,0 +1,52 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Remeras
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Remeras - Modo Administrador</h1>
+    <div class="d-flex justify-content-center mb-4">
+        <a href="{%url 'remera_create'%}"><button class="btn btn-success m-1"><i class="bi bi-plus-circle-fill"></i> Crear Remera</button></a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Talle</th>
+                <th scope="col">Color</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for remera in object_list %}
+            <tr>
+                <th scope="row">{{remera.id}}</th>
+                <td class="text-capitalize">{{remera.modelo}}</td>
+                <td>{{remera.get_talle_display}}</td>
+                <td class="text-capitalize">{{remera.color}}</td>
+                <td>${{remera.precio}}</td>
+                <td>
+                    <div class="row">
+                        <a href="{% url 'remera_detail' remera.id %}" class="col"><i class="bi bi-eye-fill"></i></a>
+                        <a href="{% url 'remera_update' remera.id %}" class="col"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="{% url 'remera_delete' remera.id %}" class="col"><i class="bi bi-trash-fill"></i></a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+{% endblock%}

@@ -1,0 +1,20 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Crear/Editar Camisa
+{%endblock%}
+
+{% block ContenidoPagina %}
+<h1 class="section-title">Crear/Editar Camisa</h1>
+<div class="container d-flex justify-content-center mb-5">
+    <form action='' method='POST' enctype="multipart/form-data">{% csrf_token %}
+
+            {{form.as_p}}
+
+        <button type='submit' class='btn btn-success'><i class="bi bi-check-circle-fill"></i> Guardar</button>
+    </form>
+</div>
+
+
+{% endblock%}

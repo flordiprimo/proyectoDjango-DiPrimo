@@ -1,0 +1,36 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Sobre mi
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<!-- ======= Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Sobre mi</h2>
+      </div>
+
+      <div class="row  justify-content-center">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member">
+            <img src="{% static 'tienda/assets/img/team/team-1.jpg' %}" alt="">
+            <h4>Maria Florencia Di Primo</h4>
+            <span>Diseñadora gráfica, Comunicadora y Front-end Developer</span>
+            <p>
+                Apasionada por aprender cosas nuevas, pasé el último año capacitándome como desarrolladora front-end haciendo cursos como Desarrollo Web, Javascript, React y recientemente Python en Coderhouse.
+            </p>
+            <div class="social">
+              <a href="https://ar.linkedin.com/in/maria-florencia-di-primo-b860351b1"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Team Section -->
+  {%endblock%}

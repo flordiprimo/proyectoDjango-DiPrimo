@@ -1,0 +1,26 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Agregar Imagen de Perfil
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Agregar Imagen de Perfil</h1>
+    <div class="d-flex justify-content-center mb-4">
+        <form action='' method="post" class="border p-4" enctype="multipart/form-data" >{%csrf_token%}
+            <p class='lead'>Estás agregando una imagen de perfil al usuario: <strong>{{user.username}}</strong></p>
+            {{form.as_p}}
+            <button type='submit' class='btn btn-success'>Guardar</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock%}

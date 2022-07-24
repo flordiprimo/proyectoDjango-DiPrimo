@@ -6,26 +6,34 @@ Buscar Camisa
 {%endblock%}
 
 {% block ContenidoPagina %}
-<h2 class="section-title">Buscar Camisa por marca </h2>
+<h2 class="section-title">Buscar Camisa por modelo </h2>
 <div class="container d-flex justify-content-center mb-5">
     <p><form action='' method='POST'>{% csrf_token %}
 
-        <input type='text' name="marca" id="" min="0">
+        <input type='text' name="modelo" id="" min="0">
 
         <input type='submit' value='Buscar' class='btn btn-success'>
+        <a href="{% url 'camisas' %}" class="btn btn-secondary">Volver a Camisas</a>
     </form></p>
 </div>
 <div class="container">
     <h2 class="section-title">Resultados</h2>
         <div class="row row-cols-4 pb-4 justify-content-center">
-            {% for resultado in marcas %}
+            {% for resultado in modelos %}
                 <div class="card col" style="width: 18rem;">
-                    <img src="{%static 'tienda/assets/img/products/camisa.jpg'%}" class="card-img-top" alt="camisa">
+                <img src=
+                {%if resultado.imagen%}
+                "{%get_media_prefix%}{{resultado.imagen}}"
+                {%else%}
+                "{%static 'tienda/assets/img/products/camisa.jpg'%}"
+                {%endif%}
+                class="card-img-top" alt="camisa">
                     <div class="card-body">
-                    <h5 class="card-title">Camisa {{resultado.marca}}</h5>
+                    <h5 class="card-title text-capitalize">Camisa {{resultado.modelo}}</h5>
                     <p class="card-text">Talle: {{resultado.get_talle_display}}</p>
-                    <p class="card-text">Color: {{resultado.color}}</p>
+                    <p class="card-text text-capitalize">Color: {{resultado.color}}</p>
                     <p class="card-text">Precio $: {{resultado.precio}}</p>
+                    <a href="{% url 'camisa_detail' resultado.id %}" class='btn btn-success'>Ver Camisa</a>
                     </div>
                 </div>
             {% endfor %}

@@ -1,0 +1,52 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Pantalones
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Pantalones - Modo Administrador</h1>
+    <div class="d-flex justify-content-center mb-4">
+        <a href="{%url 'pantalon_create'%}"><button class="btn btn-success m-1"><i class="bi bi-plus-circle-fill"></i> Crear Pantalon</button></a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Talle</th>
+                <th scope="col">Color</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pantalon in object_list %}
+            <tr>
+                <th scope="row">{{pantalon.id}}</th>
+                <td class="text-capitalize">{{pantalon.modelo}}</td>
+                <td>{{pantalon.get_talle_display}}</td>
+                <td class="text-capitalize">{{pantalon.color}}</td>
+                <td>${{pantalon.precio}}</td>
+                <td>
+                    <div class="row">
+                        <a href="{% url 'pantalon_detail' pantalon.id %}" class="col"><i class="bi bi-eye-fill"></i></a>
+                        <a href="{% url 'pantalon_update' pantalon.id %}" class="col"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="{% url 'pantalon_delete' pantalon.id %}" class="col"><i class="bi bi-trash-fill"></i></a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+{% endblock%}

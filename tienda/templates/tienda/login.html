@@ -1,0 +1,25 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Iniciar Sesión
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Iniciar sesión</h1>
+    <div class="d-flex justify-content-center my-4">
+        <form action='' method="post" class="border p-4">{%csrf_token%}
+            {{form.as_p}}
+            <button type='submit' class='btn btn-success'>Iniciar Sesión</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock%}

@@ -1,0 +1,44 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Editar Productos
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Editar Productos</h1>
+    <div class="row justify-content-center mb-4">
+        <div class="col card m-1 p-0">
+            <img src="{% static 'tienda/assets/img/slide/slide-1.jpg'%}" class="img-fluid h-50" alt="remeras">
+            <div class="card-body h-50">
+              <h5 class="card-title">Remeras</h5>
+              <p class="card-text">Ver todos los productos de la categoría, editar detalles y/o borrarlos.</p>
+              <a href="{% url 'remera_list'%}" class="btn btn-success"><i class="bi bi-eye-fill"></i> Ver/Editar categoría</a>
+            </div>
+        </div>
+        <div class="col card m-1 p-0">
+            <img src="{% static 'tienda/assets/img/slide/slide-2.jpg'%}" class="img-fluid h-50" alt="pantalones">
+            <div class="card-body h-50">
+              <h5 class="card-title">Pantalones</h5>
+              <p class="card-text">Ver todos los productos de la categoría, editar detalles y/o borrarlos.</p>
+              <a href="{% url 'pantalon_list'%}" class="btn btn-success"><i class="bi bi-eye-fill"></i> Ver/Editar categoría</a>
+            </div>
+        </div>
+        <div class="col card m-1 p-0">
+            <img src="{% static 'tienda/assets/img/slide/slide-3.jpg'%}" class="img-fluid h-50" alt="camisas">
+            <div class="card-body h-50">
+              <h5 class="card-title">Camisas</h5>
+              <p class="card-text">Ver todos los productos de la categoría, editar detalles y/o borrarlos.</p>
+              <a href="{% url 'camisa_list'%}" class="btn btn-success"><i class="bi bi-eye-fill"></i> Ver/Editar categoría</a>
+            </div>
+        </div>
+</div>
+
+
+
+
+
+
+{% endblock%}

@@ -10,25 +10,28 @@ Camisas
 <div class="container">
     <h1 class="section-title">Camisas</h1>
     <div class="d-flex justify-content-center my-4">
-        <a href="{%url 'buscar-camisa'%}"><button class="btn btn-success">Buscar por marca</button></a>
+        <a href="{%url 'buscar-camisa'%}"><button class="btn btn-success"><i class="bi bi-search"></i> Buscar por modelo</button></a>
     </div>
     <div class="row row-cols-4 pb-4 justify-content-center">
         {% for camisa in camisas %}
-            <div class="card col" style="width: 18rem;">
-                <img src="{%static 'tienda/assets/img/products/camisa.jpg'%}" class="card-img-top" alt="camisa">
+            <div class="card col m-1" style="width: 18rem;">
+                <img src=
+                {%if camisa.imagen%}
+                "{%get_media_prefix%}{{camisa.imagen}}"
+                {%else%}
+                "{%static 'tienda/assets/img/products/camisa.jpg'%}"
+                {%endif%}
+                class="card-img-top" alt="camisa">
                 <div class="card-body">
-                <h5 class="card-title">Camisa {{camisa.marca}}</h5>
-                <p class="card-text">Talle: {{camisa.get_talle_display}}</p>
-                <p class="card-text">Color: {{camisa.color}}</p>
-                <p class="card-text">Precio $: {{camisa.precio}}</p>
-                </div>
+                <h5 class="card-title text-capitalize">Camisa {{camisa.modelo}}</h5>
+                <p class="card-text mb-0"><strong>Talle:</strong> {{camisa.get_talle_display}}</p>
+                <p class="card-text mb-0 text-capitalize"><strong>Color:</strong> {{camisa.color}}</p>
+                <p class="card-text"><strong>Precio:</strong> ${{camisa.precio}}</p>
+                <a href="{% url 'camisa_detail' camisa.id %}" class='btn btn-success'><i class="bi bi-eye-fill"></i> Ver Camisa</a>    
+            </div>
             </div>
         {% endfor %}
     </div>
-    <div class="d-flex justify-content-center my-4">
-        <a href="{%url 'crear-camisa'%}"><button class="btn btn-success">+ Crear Camisa</button></a>
-    </div>
-
 </div>
 
 

@@ -1,0 +1,52 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Camisas
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Camisas - Modo Administrador</h1>
+    <div class="d-flex justify-content-center mb-4">
+        <a href="{%url 'camisa_create'%}"><button class="btn btn-success m-1"><i class="bi bi-plus-circle-fill"></i> Crear Camisa</button></a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Talle</th>
+                <th scope="col">Color</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for camisa in object_list %}
+            <tr>
+                <th scope="row">{{camisa.id}}</th>
+                <td class="text-capitalize">{{camisa.modelo}}</td>
+                <td>{{camisa.get_talle_display}}</td>
+                <td class="text-capitalize">{{camisa.color}}</td>
+                <td>${{camisa.precio}}</td>
+                <td>
+                    <div class="row">
+                        <a href="{% url 'camisa_detail' camisa.id %}" class="col"><i class="bi bi-eye-fill"></i></a>
+                        <a href="{% url 'camisa_update' camisa.id %}" class="col"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="{% url 'camisa_delete' camisa.id %}" class="col"><i class="bi bi-trash-fill"></i></a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+{% endblock%}

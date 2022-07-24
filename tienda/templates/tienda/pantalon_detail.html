@@ -1,0 +1,41 @@
+{% extends 'tienda/base.html' %}
+{% load static %}
+
+{%block tituloPagina%}
+Detalle Pantalon
+{%endblock%}
+
+{% block ContenidoPagina %}
+
+<div class="container">
+    <h1 class="section-title">Detalle de producto</h1>
+    <div class="d-flex justify-content-center">
+        <a href="{% url 'pantalones' %}" class="btn btn-success">Volver a Pantalones</a>
+    </div>
+    <div class="row border m-4">
+        <div class="col w-50">
+            <img src=
+                {%if pantalon.imagen%}
+                "{%get_media_prefix%}{{pantalon.imagen}}"
+                {%else%}
+                "{%static 'tienda/assets/img/products/pantalon.webp'%}"
+                {%endif%}
+                class="w-100" alt="pantalon">
+        </div>
+        <div class="col p-4">
+            <h2>Pantalón {{pantalon.modelo}}</h2>
+            <p class="lead">{{pantalon.descripcion}}</p>
+            <p><strong>Color:</strong> {{pantalon.color}}</p>
+            <p><strong>Talle:</strong> {{pantalon.get_talle_display}}</p>
+            <p><strong>Precio:</strong> ${{pantalon.precio}}</p>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock%}
