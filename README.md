@@ -39,3 +39,7 @@ Las dependencias utilizadas fueron las siguientes
  - Gunicorn (20.1.0)
  - Psycopg2-binary (2.9.3)
  - dj-database-url (0.5.0)
+
+ ## Unit tests
+
+Los casos de prueba se encuentran debidamente documentados en el archivo **Unit test.xlsx**
